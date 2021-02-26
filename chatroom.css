@@ -1,0 +1,29 @@
+body{
+    background-color: white;
+   
+}
+.container-fluid{
+    text-align: center;
+    justify-content: center;
+    background-color: darkgoldenrod;
+    position: sticky;
+
+}
+h1{
+    color:brown;
+
+}
+h3{
+    color: cadetblue;
+    font-style: italic;
+    padding-bottom: 10px;
+}
+.postparagraph{
+    display: flex;
+}
+button{
+    margin-left: 10px;
+}
+#chatinput{
+    display: none;
+}

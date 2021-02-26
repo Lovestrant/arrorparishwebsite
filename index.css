@@ -1,0 +1,39 @@
+.container{
+    background-color: white;
+    opacity: 0.9;
+    padding-top: 5px;
+}
+
+h1{
+    color:brown;
+
+}
+h3{
+    color: cadetblue;
+    font-style: italic;
+    padding-bottom: 10px;
+}
+.container-fluid{
+    text-align: center;
+    justify-content: center;
+    background-color: darkgoldenrod;
+    position: sticky;
+
+}
+.button{
+    margin-left: 20%;
+   
+}
+.reglogpara{
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+body{
+    background-image: url("arror.jpg");
+}
+.sticky{
+    position: fixed;
+    top:0;
+    width: 100%;
+}
