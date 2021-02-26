@@ -69,7 +69,7 @@ if(isset($_POST['reset'])){
 		
 		
         if($queryResults) {
-            $password = md5($password_1);//encryption of password
+           // $password = md5($password_1);//encryption of password
             $sql = "UPDATE authenticationdb set password = '$password' where phonenumber= '$phonenumber'";
 		$res = mysqli_query($con,$sql);
 		

@@ -72,7 +72,7 @@ if(isset($_POST['submit'])){
         if($queryResults) {
             echo"<script>alert('A user with same phone number already exist. Try again with a different number.')</script>"; 
         }else{
-            $password = md5($password_1);//encryption of password
+           // $password = md5($password_1);//encryption of password
             $sql = "INSERT INTO authenticationdb (firstname, lastname, phonenumber, password) VALUES ('$firstname', '$lastname','$phonenumber','$password')";
 		$res = mysqli_query($con,$sql);
 		

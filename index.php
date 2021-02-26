@@ -38,34 +38,28 @@
 </p>
 
 <div class="container">
-<h4>Our prayers</h4>
-<p>Prayer paragraph</p>
+<h2 style="text-align: centre; color:red; margin-left: 10%;">Join our sunday Mass:9AM-11AM</h2>
+<h4>Our Prayers</h4>
+<p>Access the common catholic prayers from our website and more updated by our parish priest. </p>
 
 <br>
 
-<h4>Our readings</h4>
-<p>readings paragraph</p>
+<h4>Our Readings</h4>
+<p>Access the weekly reading from our website and more updated by our parish priest. </p>
 <br>
 
-<h4>Our parish chat room</h4>
-<p>chat room paragraph</p>
+<h4>Our Parish Chatroom</h4>
+<p>Share to everyone through our parish chatroom. Lets join hands in praising the lord.</p>
 
 <br>
 
 
-<h4>connect with father</h4>
-<p>father connect paragraph</p>
+<h4>Connect with our Parish Priest</h4>
+<p>Get to contact our priest without visiting physically. Ask him for prayer from anywhere.</p>
 
 
 
-<h4>connect with father</h4>
-<p>father connect paragraph</p>
 
-
-
-<h4>connect with father</h4>
-<p>father connect paragraph</p>
-    </div>
 </div>
 
 </body>

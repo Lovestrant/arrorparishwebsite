@@ -68,6 +68,7 @@ if(isset($_POST['submit'])){
     $phonenumber = $_POST['phonenumber'];
     $password = $_POST['password'];
 
+    
     $sql1="SELECT * FROM authenticationdb where firstname='$firstname' and lastname = '$lastname' and phonenumber = '$phonenumber' and password= '$password' Limit 1";
     
     $result= mysqli_query($con,$sql1);

@@ -61,7 +61,7 @@
           if($row['imgname']){
                 echo "
                 <div >
-                <div style='color: green;font-weight: bold; text-align: centre;text-decoration: underline;margin-top: 4%;'>
+                <div style='text-transform: uppercase;color: green;font-weight: bold; text-align: centre;text-decoration: underline;margin-top: 4%;'>
                 <h2>".$row['posttitle']."</h2>
                 </div>
   
@@ -92,7 +92,7 @@
                 echo "
                 
                 <div >
-                <div style='color: green;font-weight: bold; text-align: centre;text-decoration: underline;margin-top: 4%;'>
+                <div style='text-transform: uppercase;color: green;font-weight: bold; text-align: centre;text-decoration: underline;margin-top: 4%;'>
                 <h2>".$row['posttitle']."</h2>
                 </div>
   

@@ -37,7 +37,7 @@
 <div class="container">
 
 
-    <h2>This is a Delete page. Ensure you are sure that you want to delete before you do..</h2>
+    <h2 style="color:red;">Delete page. Please be sure of what you want to delete before you do.</h2>
  
 
 <div class="readingsdiv">

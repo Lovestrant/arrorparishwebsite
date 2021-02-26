@@ -25,6 +25,56 @@
 <h3>Let Your Light Shine</h3>
 </div>
 <div class="container">
+
+
+<h3>Total registered users in the system:
+<label style="color: red;">
+<?php
+
+include('db.php');
+
+    include('db.php');
+    $sql2="SELECT * FROM authenticationdb";
+        
+    $result= mysqli_query($con,$sql2);
+    $queryResults= mysqli_num_rows($result);
+    
+    
+    if($queryResults) {
+    echo"$queryResults";
+    }
+  
+
+?>
+
+</label>
+</h3>
+
+<h3>Total registered admin users:
+<label style="color: red;">
+<?php
+
+include('db.php');
+
+    include('db.php');
+    $sql2="SELECT * FROM adminlogintable";
+        
+    $result= mysqli_query($con,$sql2);
+    $queryResults= mysqli_num_rows($result);
+    
+    
+    if($queryResults) {
+    echo"$queryResults";
+    }
+  
+
+?>
+
+</label>
+</h3>
+
+
+
     <h2>Register Admin.</h2>
 
 <form class="form-control"  action="developer.php" method="post">
@@ -62,8 +112,6 @@
 
 <?php
 
-include('db.php');
-
 
 if(isset($_POST['submit'])){
 
@@ -87,7 +135,7 @@ if(isset($_POST['submit'])){
         if($queryResults) {
             echo"<script>alert('A user with same phone number already exist. Try again with a different number.')</script>"; 
         }else{
-            $password = md5($password_1);//encryption of password
+            //$password = md5($password_1);//encryption of password
             $sql = "INSERT INTO adminlogintable (firstname, lastname, phonenumber, password) VALUES ('$firstname', '$lastname','$phonenumber','$password')";
 		$res = mysqli_query($con,$sql);
 		
@@ -132,7 +180,7 @@ if(isset($_POST['reset'])){
 		
 		
         if($queryResults) {
-            $password = md5($password_1);//encryption of password
+            //$password = md5($password_1);//encryption of password
             $sql = "UPDATE authenticationdb set password = '$password' where phonenumber= '$phonenumber'";
 		$res = mysqli_query($con,$sql);
 		

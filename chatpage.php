@@ -55,12 +55,6 @@ session_start();
 </script>
 
 
-
-
-
-
-
-
 </head>
 
 <body>
@@ -86,7 +80,7 @@ session_start();
     <p class="postparagraph">
     <textarea id="chatinput" class="form-control"  name="chatinput" type="text" placeholder="Type your message..."></textarea> <br> <br>
 
-    <button class="btn btn-success" type="submit" name="submitchat">Send</button>
+    <button id="submitchat" class="btn btn-success" type="submit" name="submitchat">Send</button>
 
     </p>
 
