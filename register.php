@@ -30,12 +30,12 @@
 <form class="form-control"  action="register.php" method="post">
 <input class="form-control"  name="firstname" type="text" placeholder="Enter your first name." required></input> <br> <br>
 <input class="form-control"  name="lastname" type="text" placeholder="Enter your last name." required></input> <br> <br>
-<input class="form-control" name="phonenumber" type="number" placeholder="Enter your phone number. Start with 07..." required></input> <br> <br>
-<input class="form-control" name="phonenumberconfirm" type="number" placeholder="Confirm phone number. Start with 07..." required></input> <br> <br>
+<input class="form-control" name="phonenumber" type="number" placeholder="Enter your phone number. Start with 0..." required></input> <br> <br>
+<input class="form-control" name="phonenumberconfirm" type="number" placeholder="Confirm phone number. Start with 0..." required></input> <br> <br>
 <input class="form-control"  name="password" type="password" placeholder="Enter password." required></input> <br> <br>
 <input class="form-control"  name="passwordconfirm" type="password" placeholder="Confirm password." required></input> <br> <br>
 
-<button class="btn btn-primary" type="submit" name="submit">Submit</button>
+<button class="btn btn-primary" type="submit" name="reg">Submit</button>
 
 
 </form>
@@ -50,7 +50,7 @@
 include('db.php');
 
 
-if(isset($_POST['submit'])){
+if(isset($_POST['reg'])){
 
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
@@ -72,7 +72,7 @@ if(isset($_POST['submit'])){
         if($queryResults) {
             echo"<script>alert('A user with same phone number already exist. Try again with a different number.')</script>"; 
         }else{
-           // $password = md5($password_1);//encryption of password
+          // $password = md5($password);//encryption of password
             $sql = "INSERT INTO authenticationdb (firstname, lastname, phonenumber, password) VALUES ('$firstname', '$lastname','$phonenumber','$password')";
 		$res = mysqli_query($con,$sql);
 		

@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +49,7 @@
 
 
 <?php
+if($_SESSION['phonenumber']){
 
  
 
@@ -103,7 +109,10 @@
         }
     }
 
-
+}else{
+    echo "<script>alert('You are not logged in.')</script>";
+    echo "<script>location.replace('index.php')</script>";
+ }
 	
 		?>
 

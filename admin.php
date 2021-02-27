@@ -1,77 +1,85 @@
+<?php
+session_start();
+
+?>
 
 <?php
+if($_SESSION['phonenumber']){
 
-
-include('db.php');
-
-
-
-if (isset($_POST['postbtn'])) {
-if(!empty($_POST['category']) && !empty($_POST['posttitle']) && !empty($_POST['postbody']) && !empty($_FILES['file']['name'])){
-    $imgname = $_FILES['file']['name'];
-    $tmp = $_FILES['file']['tmp_name'];
-
-    $category = $_POST['category'];
-    $posttitle = $_POST['posttitle'];
-    $postbody = $_POST['postbody'];
-  
-    
-    
-    move_uploaded_file($tmp,"Files/".$imgname);
-  
-    
-    $sql = "INSERT INTO adminposts(category, posttitle, postbody, imgname) VALUES ('$category', '$posttitle','$postbody','$imgname')";
-    $res = mysqli_query($con,$sql);
-    
-
-    if($res ==1){
-        echo "<script>alert('Posting success')</script>";
-    }
-
-}elseif(!empty($_POST['category']) && !empty($_POST['posttitle']) && empty($_POST['postbody']) && !empty($_FILES['file']['name'])){
-
-    $imgname = $_FILES['file']['name'];
-    $tmp = $_FILES['file']['tmp_name'];
-    
-    
-    $category = $_POST['category'];
-    $posttitle = $_POST['posttitle'];
-
-    move_uploaded_file($tmp,"Files/".$imgname);
-
-    $sql = "INSERT INTO adminposts(category, posttitle, imgname) VALUES ('$category', '$posttitle','$imgname')";
-    $res = mysqli_query($con,$sql);
-    
-
-    if($res ==1){
-        echo "<script>alert('Posting success')</script>";
-    }
-}elseif(!empty($_POST['category'])   && !empty($_POST['posttitle']) && !empty($_POST['postbody']) && empty($_FILES['file']['name'])){
-
-
-    $postbody = $_POST['postbody'];
-    $category = $_POST['category'];
-    $posttitle = $_POST['posttitle'];
+        include('db.php');
 
 
 
-    $sql = "INSERT INTO adminposts(category, posttitle, postbody) VALUES ('$category', '$posttitle','$postbody')";
-    $res = mysqli_query($con,$sql);
-    
+        if (isset($_POST['postbtn'])) {
+        if(!empty($_POST['category']) && !empty($_POST['posttitle']) && !empty($_POST['postbody']) && !empty($_FILES['file']['name'])){
+            $imgname = $_FILES['file']['name'];
+            $tmp = $_FILES['file']['tmp_name'];
 
-    if($res ==1){
-        echo "<script>alert('Posting success')</script>";
-    }
-}elseif(empty($_POST['category']) || empty($_POST['posttitle'])){
-    echo "<script>alert('Error: Please make sure you categorize and added a title to your post.')</script>";
-    echo "<script>location.replace('admin.php');</script>";
-}
-else{
-    echo "<script>alert('No content to post.')</script>";
-}
+            $category = $_POST['category'];
+            $posttitle = $_POST['posttitle'];
+            $postbody = $_POST['postbody'];
+        
+            
+            
+            move_uploaded_file($tmp,"Files/".$imgname);
+        
+            
+            $sql = "INSERT INTO adminposts(category, posttitle, postbody, imgname) VALUES ('$category', '$posttitle','$postbody','$imgname')";
+            $res = mysqli_query($con,$sql);
+            
 
-}
+            if($res ==1){
+                echo "<script>alert('Posting success')</script>";
+            }
 
+        }elseif(!empty($_POST['category']) && !empty($_POST['posttitle']) && empty($_POST['postbody']) && !empty($_FILES['file']['name'])){
+
+            $imgname = $_FILES['file']['name'];
+            $tmp = $_FILES['file']['tmp_name'];
+            
+            
+            $category = $_POST['category'];
+            $posttitle = $_POST['posttitle'];
+
+            move_uploaded_file($tmp,"Files/".$imgname);
+
+            $sql = "INSERT INTO adminposts(category, posttitle, imgname) VALUES ('$category', '$posttitle','$imgname')";
+            $res = mysqli_query($con,$sql);
+            
+
+            if($res ==1){
+                echo "<script>alert('Posting success')</script>";
+            }
+        }elseif(!empty($_POST['category'])   && !empty($_POST['posttitle']) && !empty($_POST['postbody']) && empty($_FILES['file']['name'])){
+
+
+            $postbody = $_POST['postbody'];
+            $category = $_POST['category'];
+            $posttitle = $_POST['posttitle'];
+
+
+
+            $sql = "INSERT INTO adminposts(category, posttitle, postbody) VALUES ('$category', '$posttitle','$postbody')";
+            $res = mysqli_query($con,$sql);
+            
+
+            if($res ==1){
+                echo "<script>alert('Posting success')</script>";
+            }
+        }elseif(empty($_POST['category']) || empty($_POST['posttitle'])){
+            echo "<script>alert('Error: Please make sure you categorize and added a title to your post.')</script>";
+            echo "<script>location.replace('admin.php');</script>";
+        }
+        else{
+            echo "<script>alert('No content to post.')</script>";
+        }
+
+        }
+
+}else{
+    echo "<script>alert('You are not logged in.')</script>";
+    echo "<script>location.replace('index.php')</script>";
+ }
 ?>
 
 

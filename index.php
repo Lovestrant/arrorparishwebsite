@@ -38,7 +38,7 @@
 </p>
 
 <div class="container">
-<h2 style="text-align: centre; color:red; margin-left: 10%;">Join our sunday Mass:9AM-11AM</h2>
+<h2 style="text-align: centre; color:red; margin-left: 10%;">Join our Sunday Mass:9AM-11AM</h2>
 <h4>Our Prayers</h4>
 <p>Access the common catholic prayers from our website and more updated by our parish priest. </p>
 

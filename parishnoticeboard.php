@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +50,7 @@
 
 <?php
 
- 
+if($_SESSION['phonenumber']){
 
     include('db.php');
     $sql="SELECT * FROM adminposts where category='noticeboard' ORDER BY ID DESC";
@@ -101,6 +106,10 @@
     }
 
 
+}else{
+    echo "<script>alert('You are not logged in.')</script>";
+    echo "<script>location.replace('index.php')</script>";
+ }
 	
 		?>
 

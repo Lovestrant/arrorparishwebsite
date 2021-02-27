@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +52,7 @@
 
  
 
+if($_SESSION['phonenumber']){
     include('db.php');
     $sql="SELECT * FROM messages ORDER BY ID DESC Limit 30";
 
@@ -77,7 +83,10 @@
     }
 
 
-	
+}else{
+    echo "<script>alert('You are not logged in.')</script>";
+    echo "<script>location.replace('index.php')</script>";
+ }	
 		?>
 
 

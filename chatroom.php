@@ -150,37 +150,40 @@ session_start();
 </html>
 
 <?php
+if($_SESSION['phonenumber']){
+
+        include('db.php');
 
 
-include('db.php');
+        if(isset($_POST['submitchat'])){
 
+            $chattext = $_POST['chatinput'];
+            $firstname = $_SESSION['firstname'];
+            $lastname = $_SESSION['lastname'];
+            $phonenumber = $_SESSION['phonenumber'];
 
-if(isset($_POST['submitchat'])){
+            if(!empty($chattext)){
 
-    $chattext = $_POST['chatinput'];
-    $firstname = $_SESSION['firstname'];
-    $lastname = $_SESSION['lastname'];
-    $phonenumber = $_SESSION['phonenumber'];
+                $sql = "INSERT INTO parishchat(firstname, lastname, phonenumber, chattext) VALUES ('$firstname', '$lastname','$phonenumber','$chattext')";
+                $res = mysqli_query($con,$sql);
+                
+            
+                if($res ==1){
+                // echo "<script>alert('Chat success')</script>";
+                    echo "<script>location.replace('chatroom.php')</script>";
+                }
+            
 
-    if(!empty($chattext)){
-
-        $sql = "INSERT INTO parishchat(firstname, lastname, phonenumber, chattext) VALUES ('$firstname', '$lastname','$phonenumber','$chattext')";
-        $res = mysqli_query($con,$sql);
-        
-    
-        if($res ==1){
-            echo "<script>alert('Chat success')</script>";
-            echo "<script>location.replace('chatroom.php')</script>";
+            }else{
+                echo "<script>alert('Type something to share.')</script>";
+                echo "<script>location.replace('chatroom.php')</script>";
+            }
         }
-    
-
-    }else{
-        echo "<script>alert('Type something to share.')</script>";
-        echo "<script>location.replace('chatroom.php')</script>";
-    }
-}
 
 
-
+}else{
+    echo "<script>alert('You are not logged in.')</script>";
+    echo "<script>location.replace('index.php')</script>";
+ }
 
 ?>

@@ -102,39 +102,41 @@ session_start();
 
 <?php
 
-
-
-
+if($_SESSION['phonenumber']){
 
 include('db.php');
 
 
 if(isset($_POST['submitchat'])){
 
-    $chattext = $_POST['chatinput'];
-    $firstname = $_SESSION['firstname'];
-    $lastname = $_SESSION['lastname'];
-    $phonenumber = $_SESSION['phonenumber'];
+            $chattext = $_POST['chatinput'];
+            $firstname = $_SESSION['firstname'];
+            $lastname = $_SESSION['lastname'];
+            $phonenumber = $_SESSION['phonenumber'];
 
-    if(!empty($chattext)){
+            if(!empty($chattext)){
 
-        $sql = "INSERT INTO messages(firstname, lastname, phonenumber, textmessage) VALUES ('$firstname', '$lastname','$phonenumber','$chattext')";
-        $res = mysqli_query($con,$sql);
-        
-    
-        if($res ==1){
-            echo "<script>alert('Message sent. Prist will contact you if necessary.')</script>";
-            echo "<script>location.replace('chatpage.php')</script>";
+                $sql = "INSERT INTO messages(firstname, lastname, phonenumber, textmessage) VALUES ('$firstname', '$lastname','$phonenumber','$chattext')";
+                $res = mysqli_query($con,$sql);
+                
+            
+                if($res ==1){
+                    echo "<script>alert('Message sent. Prist will contact you if necessary.')</script>";
+                    echo "<script>location.replace('chatpage.php')</script>";
+                }
+            
+
+            }else{
+                echo "<script>alert('Type message to send.')</script>";
+                echo "<script>location.replace('chatpage.php')</script>";
+            }
         }
-    
-
-    }else{
-        echo "<script>alert('Type message to send.')</script>";
-        echo "<script>location.replace('chatpage.php')</script>";
-    }
-}
 
 
+}else{
+    echo "<script>alert('You are not logged in.')</script>";
+    echo "<script>location.replace('index.php')</script>";
+ }
 
 
 ?>

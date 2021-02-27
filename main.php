@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,9 +51,11 @@
 </div>
 
 
+<?php
 
+if($_SESSION['phonenumber']){
 
-
+echo '
 <div class="container">
    <h2>Welcome member.</h2> <br><br>
   <a href="prayers.php"><button class="btn btn-success">Prayers</button></a> <br><br>
@@ -58,6 +65,12 @@
   <a href="chatpage.php"><button class="btn btn-warning">Contact Parish Priest</button></a> <br><br>
  
 </div>
+';
 
+}else{
+    echo "<script>alert('You are not logged in.')</script>";
+    echo "<script>location.replace('index.php')</script>";
+ }
+?>
 </body>
 </html>
