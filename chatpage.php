@@ -89,7 +89,6 @@ session_start();
 
 <div class="chatareadiv">
 
-
 </div>
 
 

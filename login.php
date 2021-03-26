@@ -68,13 +68,13 @@ if(isset($_POST['submit'])){
     $lastname = $_POST['lastname'];
     $phonenumber = $_POST['phonenumber'];
     $password = $_POST['password'];
+    
 
     //$password1 = md5($password);
     $sql1="SELECT * FROM authenticationdb where firstname='$firstname' and lastname = '$lastname' and phonenumber = '$phonenumber' and password= '$password' LIMIT 1";
-    
+  
     $result= mysqli_query($con,$sql1);
     $queryResults= mysqli_num_rows($result);
-    
     
     if($queryResults) {
 
@@ -82,13 +82,14 @@ if(isset($_POST['submit'])){
         $_SESSION['firstname'] = "$firstname";
         $_SESSION['lastname'] = "$lastname";
         $_SESSION['phonenumber'] = "$phonenumber";
+    
 
         //taking user to main page
         echo "<script>alert('Login successful.')</script>";
         echo "<script>location.replace('main.php')</script>";
 
     }else{
-        echo "<script>alert('No such user in our system. Fill your details correctly.')</script>";
+        echo "<script>alert('No such user in the system. Fill your details correctly.')</script>";
         echo "<script>location.replace('login.php')</script>";
     }
         

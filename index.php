@@ -31,7 +31,7 @@
 
 <p class="reglogpara">
 
-<a href="register.php"><button class="btn btn-primary" style="color:green;">Register</button></a>
+<a href="register.php"><button class="btn btn-primary" style="color:yellow;">Register</button></a>
 
 <a href="login.php"><button class="btn btn-success"  style="color:red;margin-left:20%;">Login</button></a>
 
@@ -41,15 +41,22 @@
 <h2 style="text-align: centre; color:red; margin-left: 10%;">Join our Sunday Mass:9AM-11AM</h2>
 <h4>Our Prayers</h4>
 <p>Access the common catholic prayers from our website and more updated by our parish priest. </p>
+<a href="prayers.php"><button style="color: indigo;">Access prayers without login</button></a>
+
 
 <br>
 
 <h4>Our Readings</h4>
 <p>Access the weekly reading from our website and more updated by our parish priest. </p>
+<a href="readings.php"><button style="color: indigo;">Access readings without login</button></a>
 <br>
 
 <h4>Our Parish Chatroom</h4>
 <p>Share to everyone through our parish chatroom. Lets join hands in praising the lord.</p>
+
+<br>
+<h4>Parish Noticeboard</h4>
+<p>Get Updated on what is going on in the parish.</p>
 
 <br>
 

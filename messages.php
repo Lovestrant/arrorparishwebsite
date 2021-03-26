@@ -70,7 +70,7 @@ if($_SESSION['phonenumber']){
             <div style='height: auto; width:50%; margin: 20px; padding: 10px;background-color: lightgreen; 
              border-radius: 10px; border-radius: 10px; '>
              <p style='color: blue; margin:0;'>".$row['firstname']."-".$row['lastname']."</p>
-             <p style='color: orange;'>0".$row['phonenumber']."<br></p>
+             <p style='color: orange;'>".$row['phonenumber']."<br></p>
              ".$row['textmessage']."</div>
           
         

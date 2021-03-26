@@ -51,7 +51,7 @@ session_start();
 
 <?php
 
- if($_SESSION['phonenumber']){
+
 
     include('db.php');
     $sql="SELECT * FROM adminposts where category='prayer' ORDER BY ID DESC";
@@ -106,10 +106,7 @@ session_start();
         }
     }
 
- }else{
-    echo "<script>alert('You are not logged in.')</script>";
-    echo "<script>location.replace('index.php')</script>";
- }
+
 	
 		?>
 

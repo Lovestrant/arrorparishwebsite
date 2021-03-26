@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,8 +79,14 @@ if(isset($_POST['reset'])){
 		
 	
 		if($res ==1){
-			echo "<script>alert('Update successful.')</script>";
-            echo "<script>location.replace('login.php')</script>";
+
+             //set session variables
+            $_SESSION['firstname'] = "$firstname";
+            $_SESSION['lastname'] = "$lastname";
+            $_SESSION['phonenumber'] = "$phonenumber";
+
+			echo "<script>alert('Update successful. You are now logged in.')</script>";
+            echo "<script>location.replace('main.php')</script>";
 		}
      }else{
             echo"<script>alert('No user with those details in the system. Please try again. Ensure you fill your details correctly.')</script>"; 

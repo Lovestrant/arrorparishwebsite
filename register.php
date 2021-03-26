@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,8 +83,15 @@ if(isset($_POST['reg'])){
 		
 	
 		if($res ==1){
-			echo "<script>alert('Registration successful.')</script>";
-            echo "<script>location.replace('login.php')</script>";
+
+        //set session variables
+        $_SESSION['firstname'] = "$firstname";
+        $_SESSION['lastname'] = "$lastname";
+        $_SESSION['phonenumber'] = "$phonenumber";
+
+
+			echo "<script>alert('Registration successful. You are now logged in.')</script>";
+            echo "<script>location.replace('main.php')</script>";
 		}
 
         }

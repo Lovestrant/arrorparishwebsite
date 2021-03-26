@@ -53,7 +53,6 @@ session_start();
 
  
 
-if($_SESSION['phonenumber']){
     include('db.php');
     $sql="SELECT * FROM adminposts where category='reading' ORDER BY ID DESC";
 
@@ -109,10 +108,7 @@ if($_SESSION['phonenumber']){
         }
     }
 
-}else{
-    echo "<script>alert('You are not logged in.')</script>";
-    echo "<script>location.replace('index.php')</script>";
- }
+
 	
 		?>
 
