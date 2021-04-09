@@ -3,7 +3,6 @@ session_start();
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,8 +37,9 @@ session_start();
 </form>
 </div>
 
+
 <div style="text-align: centre;">
-<form action="readingsadminsearch.php" method="post">
+<form action="parishnoticeboardadminsearch.php" method="post">
 <input style="width: 60%; height: 40px; margin-top: 10px; margin-bottom: 10px;" type="text" placeholder="Search..." name="searchinput" >
 <button name="searchbtn">Search</button>
 </form>
@@ -50,31 +50,30 @@ session_start();
 <div class="container">
 
 
-    <h2>Catholic Church Readings.</h2>
+    <h2 style="color: red;font-style: italic;">Newest On Noticeboard:</h2>
  
 
-<div class="readingsdiv">
+<div class="noticeboarddiv">
 
 
 <?php
+include('db.php');
+if(isset($_POST['searchbtn'])) {
+    if(!empty($_POST['searchinput'])){
 
-if($_SESSION['phonenumber']){
+    $search = mysqli_real_escape_string($con, $_POST['searchinput']);
+    $sql = "SELECT * FROM adminposts WHERE category ='noticeboard' and posttitle LIKE '%$search%'";
+    $result = mysqli_query($con, $sql);
+    $queryResult = mysqli_num_rows($result);
 
-    include('db.php');
-    $sql="SELECT * FROM adminposts where category='reading' ORDER BY ID DESC";
 
-    $data= mysqli_query($con,$sql);
-    $queryResults= mysqli_num_rows($data);
-    
 
-    
-    
-    if($queryResults >0) {
-        while($row = mysqli_fetch_assoc($data)) {
+    if($queryResult > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
           if($row['imgname']){
                 echo "
                 <div >
-                <div style='text-transform: uppercase;color: green;font-weight: bold; text-align: centre;text-decoration: underline;margin-top: 4%;'>
+                <div style='text-transform: uppercase;color: blue;font-weight: bold; text-align: centre;text-decoration: underline;margin-top: 4%;'>
                 <h2>".$row['posttitle']."</h2>
                 </div>
   
@@ -91,6 +90,7 @@ if($_SESSION['phonenumber']){
 
 
               " ;
+
               echo"
               <div style='text-align: right;margin-top: 10px;'>
               <a  href='deletepage.php?u_id=".$row['id']."'>
@@ -100,13 +100,12 @@ if($_SESSION['phonenumber']){
               </div>
       
               ";
-
             }
              else{
                 echo "
                 
                 <div >
-                <div style='text-transform: uppercase;color: green;font-weight: bold; text-align: centre;text-decoration: underline;margin-top: 4%;'>
+                <div style='text-transform: uppercase;color: blue;font-weight: bold; text-align: centre;text-decoration: underline;margin-top: 4%;'>
                 <h2>".$row['posttitle']."</h2>
                 </div>
   
@@ -115,7 +114,6 @@ if($_SESSION['phonenumber']){
                 </div>
               
                 ";
-    
                 echo"
                 <div style='text-align: right;margin-top: 10px;'>
                 <a  href='deletepage.php?u_id=".$row['id']."'>
@@ -132,11 +130,13 @@ if($_SESSION['phonenumber']){
     }
 
 }else{
-    echo "<script>alert('You are not logged in.')</script>";
-    echo "<script>location.replace('index.php')</script>";
+    echo "<script>alert('Type something to search.')</script>";
+    echo "<script>location.replace('parishnoticeadminboard.php')</script>";
  }
+}
 	
 		?>
+
 
 
 </div>

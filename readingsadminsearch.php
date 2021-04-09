@@ -38,12 +38,6 @@ session_start();
 </form>
 </div>
 
-<div style="text-align: centre;">
-<form action="readingsadminsearch.php" method="post">
-<input style="width: 60%; height: 40px; margin-top: 10px; margin-bottom: 10px;" type="text" placeholder="Search..." name="searchinput" >
-<button name="searchbtn">Search</button>
-</form>
-</div>
 
 </div>
 </div>
@@ -57,20 +51,19 @@ session_start();
 
 
 <?php
+include('db.php');
+if(isset($_POST['searchbtn'])) {
+    if(!empty($_POST['searchinput'])){
 
-if($_SESSION['phonenumber']){
+    $search = mysqli_real_escape_string($con, $_POST['searchinput']);
+    $sql = "SELECT * FROM adminposts WHERE category ='reading' and posttitle LIKE '%$search%'";
+    $result = mysqli_query($con, $sql);
+    $queryResult = mysqli_num_rows($result);
 
-    include('db.php');
-    $sql="SELECT * FROM adminposts where category='reading' ORDER BY ID DESC";
 
-    $data= mysqli_query($con,$sql);
-    $queryResults= mysqli_num_rows($data);
-    
 
-    
-    
-    if($queryResults >0) {
-        while($row = mysqli_fetch_assoc($data)) {
+    if($queryResult > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
           if($row['imgname']){
                 echo "
                 <div >
@@ -105,7 +98,7 @@ if($_SESSION['phonenumber']){
              else{
                 echo "
                 
-                <div >
+                <div>
                 <div style='text-transform: uppercase;color: green;font-weight: bold; text-align: centre;text-decoration: underline;margin-top: 4%;'>
                 <h2>".$row['posttitle']."</h2>
                 </div>
@@ -132,9 +125,10 @@ if($_SESSION['phonenumber']){
     }
 
 }else{
-    echo "<script>alert('You are not logged in.')</script>";
-    echo "<script>location.replace('index.php')</script>";
+    echo "<script>alert('Type something to search.')</script>";
+    echo "<script>location.replace('readings.php')</script>";
  }
+}
 	
 		?>
 

@@ -35,7 +35,7 @@ session_start();
  
 
 <form class="form-control"  action="update.php" method="post">
-    <input class="form-control"  name="firstname" type="text" placeholder="Enter your first name." required><br> <br>
+    <input class="form-control"  name="securitycode" type="text" placeholder="Enter your Security Code." required><br> <br>
     <input class="form-control"  name="phonenumber" type="number" placeholder="Enter your phone number." required><br> <br>
     <input class="form-control" name="password" type="password" placeholder="Enter new password." required><br> <br>
     <input class="form-control" name="passwordconfirm" type="password" placeholder="Confirm password." required> <br> <br>
@@ -57,7 +57,7 @@ include('db.php');
 if(isset($_POST['reset'])){
 
     
-    $firstname= $_POST['firstname'];
+    $securitycode= $_POST['securitycode'];
     $phonenumber= $_POST['phonenumber'];
     $password= $_POST['password'];
     $passwordconfirm= $_POST['passwordconfirm'];
@@ -67,7 +67,7 @@ if(isset($_POST['reset'])){
     
     }else{
       
-        $sql1 = "SELECT * from authenticationdb where firstname = '$firstname' and phonenumber = '$phonenumber' Limit 1";
+        $sql1 = "SELECT * from authenticationdb where securitycode = '$securitycode' and phonenumber = '$phonenumber' Limit 1";
     	$result= mysqli_query($con,$sql1);
 		$queryResults= mysqli_num_rows($result);
 		

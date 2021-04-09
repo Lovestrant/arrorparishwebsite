@@ -32,11 +32,20 @@ session_start();
 <h3>Let Your Light Shine</h3>
 
 
+
 <div style="text-align: right;background-color: transparent;">
 <form action="logout.php">
 <button class="btnsearch" style="background-color: transparent;"><i class="material-icons">logout</i>Log Out</button>
 </form>
 </div>
+
+<div style="text-align: centre;">
+<form action="prayerssearch.php" method="post">
+<input style="width: 60%; height: 40px; margin-top: 10px; margin-bottom: 10px;" type="text" placeholder="Search..." name="searchinput" >
+<button name="searchbtn">Search</button>
+</form>
+</div>
+
 
 </div>
 </div>

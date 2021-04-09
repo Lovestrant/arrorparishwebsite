@@ -4,7 +4,6 @@ session_start();
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,8 +35,6 @@ session_start();
    
 
 <form class="form-control" action="adminlogin.php" method="post">
-<input class="form-control" name="firstname" type="text" placeholder="Enter admin firstname." required></input> <br> <br>
-<input class="form-control" name="lastname" type="text" placeholder="Enter admin lastname." required></input> <br> <br>
 
 <input class="form-control" name="phonenumber" type="number" placeholder="Enter admin phone number." required></input> <br> <br>
 
@@ -59,27 +56,30 @@ session_start();
 include('db.php');
 
 if(isset($_POST['submit'])){
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
+    
     $phonenumber = $_POST['phonenumber'];
     $password = $_POST['password'];
 
-    $sql1="SELECT * FROM adminlogintable where firstname='$firstname' and lastname = '$lastname' and phonenumber = '$phonenumber' and password= '$password' Limit 1";
+    $sql1="SELECT * FROM adminlogintable where phonenumber = '$phonenumber' and password= '$password' Limit 1";
     
     $result= mysqli_query($con,$sql1);
     $queryResults= mysqli_num_rows($result);
     
     
     if($queryResults) {
+        while($row = mysqli_fetch_assoc($result)) {
 
-        //set session variables
-        $_SESSION['firstname'] = "$firstname";
-        $_SESSION['lastname'] = "$lastname";
-        $_SESSION['phonenumber'] = "$phonenumber";
+            //set session variables
+            $_SESSION['firstname'] = $row['firstname'];
+            $_SESSION['lastname'] = $row['lastname'];
+            $_SESSION['phonenumber'] = "$phonenumber";
+        
+    
 
         //taking user to main page
         echo "<script>alert('Login successful.')</script>";
         echo "<script>location.replace('admin.php')</script>";
+        }
 
     }else{
         echo "<script>alert('No such user in our system. Fill your details correctly.')</script>";

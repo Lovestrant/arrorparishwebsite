@@ -3,7 +3,6 @@ session_start();
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,39 +37,32 @@ session_start();
 </form>
 </div>
 
-<div style="text-align: centre;">
-<form action="readingsadminsearch.php" method="post">
-<input style="width: 60%; height: 40px; margin-top: 10px; margin-bottom: 10px;" type="text" placeholder="Search..." name="searchinput" >
-<button name="searchbtn">Search</button>
-</form>
-</div>
 
 </div>
 </div>
 <div class="container">
 
 
-    <h2>Catholic Church Readings.</h2>
+    <h2>CATHOLIC PRAYERS:</h2>
  
 
-<div class="readingsdiv">
+<div class="Prayersdiv">
 
 
 <?php
+include('db.php');
+if(isset($_POST['searchbtn'])) {
+    if(!empty($_POST['searchinput'])){
 
-if($_SESSION['phonenumber']){
+    $search = mysqli_real_escape_string($con, $_POST['searchinput']);
+    $sql = "SELECT * FROM adminposts WHERE category ='prayer' and posttitle LIKE '%$search%'";
+    $result = mysqli_query($con, $sql);
+    $queryResult = mysqli_num_rows($result);
 
-    include('db.php');
-    $sql="SELECT * FROM adminposts where category='reading' ORDER BY ID DESC";
 
-    $data= mysqli_query($con,$sql);
-    $queryResults= mysqli_num_rows($data);
-    
 
-    
-    
-    if($queryResults >0) {
-        while($row = mysqli_fetch_assoc($data)) {
+    if($queryResult > 0) {
+        while($row = mysqli_fetch_assoc($result)) {
           if($row['imgname']){
                 echo "
                 <div >
@@ -100,7 +92,6 @@ if($_SESSION['phonenumber']){
               </div>
       
               ";
-
             }
              else{
                 echo "
@@ -125,17 +116,16 @@ if($_SESSION['phonenumber']){
                 </div>
         
                 ";
-
             }
 
         }
     }
 
 }else{
-    echo "<script>alert('You are not logged in.')</script>";
-    echo "<script>location.replace('index.php')</script>";
+    echo "<script>alert('Type something to search.')</script>";
+    echo "<script>location.replace('prayersadmin.php')</script>";
  }
-	
+}
 		?>
 
 

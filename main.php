@@ -49,6 +49,113 @@ session_start();
  
 
 </div>
+<div>
+
+
+
+<h2>Welcome member.</h2> <br>
+<a href="prayers.php"><button class="btn btn-success">Prayers</button></a> <br><br>
+    <p> 
+    <label>There are:</label>
+
+<label style='font-size: 20px; color: red;'>
+<?php
+include('db.php');
+$sql2="SELECT * FROM adminposts where category='prayer'";
+        
+$result= mysqli_query($con,$sql2);
+$queryResults= mysqli_num_rows($result);
+
+
+if($queryResults) {
+echo"$queryResults";
+}
+
+
+?>
+</label>
+<label>Prayers Posted in total.</label>
+    </p>
+
+
+<p>
+<a href="readings.php"><button class="btn btn-primary">Readings</button></a> <br><br>
+<label>There are:</label>
+
+<label style='font-size: 20px; color: red;'>
+<?php
+include('db.php');
+$sql2="SELECT * FROM adminposts where category='reading'";
+        
+$result= mysqli_query($con,$sql2);
+$queryResults= mysqli_num_rows($result);
+
+
+if($queryResults) {
+echo"$queryResults";
+}
+
+
+?>
+</label>
+<label>Readings Posted in total.</label>
+
+
+</p>
+
+<p>
+<a href="parishnoticeboard.php"><button class="btn btn-info">Parish Noticeboard</button></a> <br><br>
+<label>There are:</label>
+
+<label style='font-size: 20px; color: red;'>
+<?php
+include('db.php');
+$sql2="SELECT * FROM adminposts where category='noticeboard'";
+        
+$result= mysqli_query($con,$sql2);
+$queryResults= mysqli_num_rows($result);
+
+
+if($queryResults) {
+echo"$queryResults";
+}
+
+
+?>
+</label>
+<label>Posts on the noticeboad in total.</label>
+
+
+</p>
+
+<p>
+<a href="chatroom.php"><button class="btn btn-dark">Parish Chatroom</button></a> <br><br>
+<label>There are:</label>
+
+<label style='font-size: 20px; color: red;'>
+<?php
+include('db.php');
+$sql2="SELECT * FROM parishchat";
+        
+$result= mysqli_query($con,$sql2);
+$queryResults= mysqli_num_rows($result);
+
+
+if($queryResults) {
+echo"$queryResults";
+}
+
+
+?>
+</label>
+<label>Chats from church members in total.</label>
+
+
+</p>
+
+<h4>Click the button below to contact Parish priest.</h4>
+
+</div>
 
 
 <?php
@@ -57,11 +164,8 @@ if($_SESSION['phonenumber']){
 
 echo '
 <div class="container">
-   <h2>Welcome member.</h2> <br><br>
-  <a href="prayers.php"><button class="btn btn-success">Prayers</button></a> <br><br>
-  <a href="readings.php"><button class="btn btn-primary">Readings</button></a> <br><br>
-  <a href="parishnoticeboard.php"><button class="btn btn-info">Parish Noticeboard</button></a> <br><br>
-  <a href="chatroom.php"><button class="btn btn-dark">Parish Chatroom</button></a> <br><br>
+  
+   
   <a href="chatpage.php"><button class="btn btn-warning">Contact Parish Priest</button></a> <br><br>
  
 </div>

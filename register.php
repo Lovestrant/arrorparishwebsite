@@ -37,10 +37,13 @@ session_start();
 <input class="form-control"  name="lastname" type="text" placeholder="Enter your last name." required></input> <br> <br>
 <input class="form-control" name="phonenumber" type="number" placeholder="Enter your phone number. Start with 0..." required></input> <br> <br>
 <input class="form-control" name="phonenumberconfirm" type="number" placeholder="Confirm phone number. Start with 0..." required></input> <br> <br>
+<input class="form-control"  name="securitycode" type="text" placeholder="Enter your security code. Useful in case you forget password" required></input> <br> <br>
+<input class="form-control"  name="securitycodeconfirm" type="text" placeholder="Confirm your security code. Useful in case you forget password" required></input> <br> <br>
+
 <input class="form-control"  name="password" type="password" placeholder="Enter password." required></input> <br> <br>
 <input class="form-control"  name="passwordconfirm" type="password" placeholder="Confirm password." required></input> <br> <br>
 
-<button class="btn btn-primary" type="submit" name="reg">Submit</button>
+<button class="btn btn-primary" type="submit" name="reg">Register</button>
 
 
 </form>
@@ -63,10 +66,12 @@ if(isset($_POST['reg'])){
     $phonenumberconfirm = $_POST['phonenumberconfirm'];
     $password = $_POST['password'];
     $passwordconfirm = $_POST['passwordconfirm'];
+    $securitycode = $_POST['securitycode'];
+    $securitycodeconfirm = $_POST['securitycodeconfirm'];
 
-    if($password != $passwordconfirm || $phonenumber != $phonenumberconfirm){
-        echo"<script>alert('Password or phone number with their confirmations does not match. Please try again.')</script>";
-    }elseif($password === $passwordconfirm && $phonenumber === $phonenumberconfirm){
+    if($password != $passwordconfirm || $phonenumber != $phonenumberconfirm || $securitycode != $securitycodeconfirm){
+        echo"<script>alert('Password,securitycode or phone number with their confirmations does not match. Please try again.')</script>";
+    }elseif($password === $passwordconfirm && $phonenumber === $phonenumberconfirm && $securitycode === $securitycodeconfirm){
 
         $sql1="SELECT * FROM authenticationdb where phonenumber = '$phonenumber' Limit 1";
     
@@ -78,7 +83,7 @@ if(isset($_POST['reg'])){
             echo"<script>alert('A user with same phone number already exist. Try again with a different number.')</script>"; 
         }else{
           // $password = md5($password);//encryption of password
-            $sql = "INSERT INTO authenticationdb (firstname, lastname, phonenumber, password) VALUES ('$firstname', '$lastname','$phonenumber','$password')";
+            $sql = "INSERT INTO authenticationdb (firstname, lastname, phonenumber, password, securitycode) VALUES ('$firstname', '$lastname','$phonenumber','$password', '$securitycode')";
 		$res = mysqli_query($con,$sql);
 		
 	

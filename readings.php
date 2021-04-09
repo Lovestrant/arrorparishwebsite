@@ -38,12 +38,19 @@ session_start();
 </form>
 </div>
 
+<div style="text-align: centre;">
+<form action="readingssearch.php" method="post">
+<input style="width: 60%; height: 40px; margin-top: 10px; margin-bottom: 10px;" type="text" placeholder="Search..." name="searchinput" >
+<button name="searchbtn">Search</button>
+</form>
+</div>
+
 </div>
 </div>
 <div class="container">
 
 
-    <h2>Catholic Church Readings.</h2>
+    <h2>Catholic Church Readings:</h2>
  
 
 <div class="readingsdiv">
@@ -107,7 +114,6 @@ session_start();
 
         }
     }
-
 
 	
 		?>

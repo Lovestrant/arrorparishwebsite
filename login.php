@@ -32,12 +32,10 @@ session_start();
 <div class="container">
     <p style="text-align: right;color:green;"><a style="color:green;" href="adminlogin.php">Login as admin</a></p>
 
-    <h2>Login.</h2>
+    <h2>Login as a Member.</h2>
  
 
 <form class="form-control"  action="login.php" method="post">
-<input class="form-control"  name="firstname" type="text" placeholder="Enter your first name." required></input> <br> <br>
-<input class="form-control"  name="lastname" type="text" placeholder="Enter your last name." required></input> <br> <br>
 
 <input class="form-control"  name="phonenumber" type="number" placeholder="Enter your phone number." required></input> <br> <br>
 
@@ -64,23 +62,23 @@ include('db.php');
 
 
 if(isset($_POST['submit'])){
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
+   
     $phonenumber = $_POST['phonenumber'];
     $password = $_POST['password'];
     
 
     //$password1 = md5($password);
-    $sql1="SELECT * FROM authenticationdb where firstname='$firstname' and lastname = '$lastname' and phonenumber = '$phonenumber' and password= '$password' LIMIT 1";
+    $sql1="SELECT * FROM authenticationdb where  phonenumber = '$phonenumber' and password= '$password' LIMIT 1";
   
     $result= mysqli_query($con,$sql1);
     $queryResults= mysqli_num_rows($result);
     
     if($queryResults) {
+        while($row = mysqli_fetch_assoc($result)) {
 
         //set session variables
-        $_SESSION['firstname'] = "$firstname";
-        $_SESSION['lastname'] = "$lastname";
+        $_SESSION['firstname'] = $row['firstname'];
+        $_SESSION['lastname'] = $row['lastname'];
         $_SESSION['phonenumber'] = "$phonenumber";
     
 
@@ -88,6 +86,7 @@ if(isset($_POST['submit'])){
         echo "<script>alert('Login successful.')</script>";
         echo "<script>location.replace('main.php')</script>";
 
+        }
     }else{
         echo "<script>alert('No such user in the system. Fill your details correctly.')</script>";
         echo "<script>location.replace('login.php')</script>";
