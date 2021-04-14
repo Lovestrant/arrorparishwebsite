@@ -28,8 +28,8 @@ session_start();
 
 <body>
 <div class="container-fluid">
-<h1>ARROR CATHOLIC PARISH</h1>
-<h3>Let Your Light Shine</h3>
+<h1>ST BENEDICT ARROR CATHOLIC PARISH</h1>
+<h3>Prayer and Work</h3>
 
 
 <div style="text-align: right;background-color: transparent;">

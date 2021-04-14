@@ -3,7 +3,6 @@ session_start();
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,30 +37,26 @@ session_start();
 </form>
 </div>
 
-<div style="text-align: centre;">
-<form action="readingssearch.php" method="post">
-<input style="width: 60%; height: 40px; margin-top: 10px; margin-bottom: 10px;" type="text" placeholder="Search..." name="searchinput" >
-<button name="searchbtn">Search</button>
-</form>
-</div>
+
+
 
 </div>
 </div>
 <div class="container">
 
 
-    <h2>Catholic Church Readings:</h2>
+    <h2 style="color: red;font-style: italic;">Church Asserts:</h2>
  
 
-<div class="readingsdiv">
+<div class="noticeboarddiv">
 
 
 <?php
 
- 
+if($_SESSION['phonenumber']){
 
     include('db.php');
-    $sql="SELECT * FROM adminposts where category='reading' ORDER BY ID DESC";
+    $sql="SELECT * FROM adminposts where category='asserts' ORDER BY ID DESC";
 
     $data= mysqli_query($con,$sql);
     $queryResults= mysqli_num_rows($data);
@@ -74,7 +69,7 @@ session_start();
           if($row['imgname']){
                 echo "
                 <div >
-                <div style='text-transform: uppercase;color: green;font-weight: bold; text-align: centre;text-decoration: underline;margin-top: 4%;'>
+                <div style='text-transform: uppercase;color: blue;font-weight: bold; text-align: centre;text-decoration: underline;margin-top: 4%;'>
                 <h2>".$row['posttitle']."</h2>
                 </div>
   
@@ -91,14 +86,22 @@ session_start();
 
 
               " ;
-       
 
+              echo"
+              <div style='text-align: right;margin-top: 10px;'>
+              <a  href='deletepage.php?u_id=".$row['id']."'>
+                   
+         
+              <button class='btn btn-danger'>Delete</button>
+              </div>
+      
+              ";
             }
              else{
                 echo "
                 
                 <div >
-                <div style='text-transform: uppercase;color: green;font-weight: bold; text-align: centre;text-decoration: underline;margin-top: 4%;'>
+                <div style='text-transform: uppercase;color: blue;font-weight: bold; text-align: centre;text-decoration: underline;margin-top: 4%;'>
                 <h2>".$row['posttitle']."</h2>
                 </div>
   
@@ -107,16 +110,28 @@ session_start();
                 </div>
               
                 ";
-    
-               
+                echo"
+                <div style='text-align: right;margin-top: 10px;'>
+                <a  href='deletepage.php?u_id=".$row['id']."'>
+                     
+           
+                <button class='btn btn-danger'>Delete</button>
+                </div>
+        
+                ";
 
             }
 
         }
     }
 
+}else{
+    echo "<script>alert('You are not logged in.')</script>";
+    echo "<script>location.replace('index.php')</script>";
+ }
 	
 		?>
+
 
 
 </div>

@@ -33,9 +33,8 @@ session_start();
 <body>
 <div class="container-fluid">
 
-<h1>ARROR CATHOLIC PARISH</h1>
-
-<h3>Let Your Light Shine</h3>
+<h1>ST BENEDICT ARROR CATHOLIC PARISH</h1>
+<h3>Prayer and Work</h3>
 
 
 <div style="text-align: right;background-color: transparent;">
@@ -148,10 +147,53 @@ echo"$queryResults";
 
 ?>
 </label>
-<label>Chats from church members in total.</label>
+<label>Chats from members in total.</label>
 
 
 </p>
+<a href="history.php"><button class="btn btn-info">Church  History</button></a> <br><br>
+
+<label>There are:</label>
+
+<label style='font-size: 20px; color: red;'>
+<?php
+include('db.php');
+$sql2="SELECT * FROM adminposts where category='history'";
+        
+$result= mysqli_query($con,$sql2);
+$queryResults= mysqli_num_rows($result);
+
+
+if($queryResults) {
+echo"$queryResults";
+}
+
+
+?>
+</label>
+<label> Church history posts in total.</label>
+<br><br>
+<a href="asserts.php"><button class="btn btn-info">Church  Asserts</button></a> <br><br>
+
+<label>There are:</label>
+
+<label style='font-size: 20px; color: red;'>
+<?php
+include('db.php');
+$sql2="SELECT * FROM adminposts where category='asserts'";
+        
+$result= mysqli_query($con,$sql2);
+$queryResults= mysqli_num_rows($result);
+
+
+if($queryResults) {
+echo"$queryResults";
+}
+
+
+?>
+</label>
+<label> Church asserts posts in total.</label>
 
 <h4>Click the button below to contact Parish priest.</h4>
 

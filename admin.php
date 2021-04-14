@@ -131,20 +131,26 @@ if($_SESSION['phonenumber']){
 
 <body>
 <div class="container-fluid">
-<h1>ARROR CATHOLIC PARISH</h1>
-<h3>Let Your Light Shine</h3>
+<h1>ST BENEDICT ARROR CATHOLIC PARISH</h1>
+<h3>Prayer and Work</h3>
 
+<div style="text-align: right;background-color: transparent;">
+<form action="logout.php">
+<button class="btnsearch" style="background-color: transparent;"><i class="material-icons">logout</i>Log Out</button>
+</form>
+</div>
 
 <div style="background-color: transparent;width: 100%;">
 
 
-
+<a href="assertsadmin.php"><button class="btn btn-warning"  style="margin-left:5%;">Assets</button></a>
 <a href="prayersadmin.php"><button class="btn btn-primary" style="margin-left:0%;">Prayers</button></a>
 <a href="readingsadmin.php"><button class="btn btn-secondary"  style="margin-left:5%;">Readings</button></a>
 <a href="parishnoticeadminboard.php"><button class="btn btn-info"  style="margin-left:5%;">Noticeboard</button></a>
 <a href="chatroom.php"><button class="btn btn-danger"  style="margin-left:5%;">Chatroom</button></a>
 <a href="messages.php"><button class="btn btn-warning"  style="margin-left:5%;">Messages</button></a>
-
+<a href="historyadmin.php"><button class="btn btn-warning"  style="margin-left:5%;">History</button></a>
+<a href="contactsadmin.php"><button class="btn btn-secondary"  style="margin-left:5%;">Contacts</button></a>
 
 
 
@@ -164,7 +170,9 @@ if($_SESSION['phonenumber']){
         <input class="form-check-input" type="radio" name="category" value="prayer" >prayer
         <input class="form-check-input" type="radio" name="category" value="reading" >reading
         <input class="form-check-input" type="radio" name="category" value="noticeboard">noticeboard
-
+        <input class="form-check-input" type="radio" name="category" value="asserts">Asserts
+        <input class="form-check-input" type="radio" name="category" value="history">History
+        <input class="form-check-input" type="radio" name="category" value="contacts">Contacts
         
             <br><br>
 
@@ -174,7 +182,7 @@ if($_SESSION['phonenumber']){
 
         <textarea id="postinput" class="form-control" type="text" name="postbody" placeholder="Enter the post body."></textarea>
             <br>
-            <label>Attach image:</label> <input name="file" type="file" id="file" accept="image/*">
+            <label>Attach image:(optional)</label> <input name="file" type="file" id="file" accept="image/*">
             <br><br>
         <button class="btn btn-success" name="postbtn" type="submit">Post</button>
 

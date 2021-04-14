@@ -108,8 +108,8 @@ session_start();
 
 <body>
 <div class="container-fluid">
-<h1>ARROR CATHOLIC PARISH</h1>
-<h3>Let Your Light Shine</h3>
+<h1>ST BENEDICT ARROR CATHOLIC PARISH</h1>
+<h3>Prayer and Work</h3>
 
 
 <div style="text-align: right;background-color: transparent;">
@@ -127,9 +127,9 @@ session_start();
  
     <form  action="chatroom.php" method="post">
     <p class="postparagraph">
-    <textarea id="chatinput" class="form-control"  name="chatinput" type="text" placeholder="Chat now..."></textarea> <br> <br>
+    <textarea id="chatinput" class="form-control"  name="chatinput" type="text" placeholder="Chat now..."></textarea>
 
-    <button class="btn btn-success" type="submit" name="submitchat">Chat</button>
+    <p><button class="btn btn-success" type="submit" name="submitchat">Chat</button></p>
 
     </p>
 
